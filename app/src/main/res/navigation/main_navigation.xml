@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation.xml"
-    app:startDestination="@id/recipeListFragment">
+    app:startDestination="@id/itemHome">
 
     <fragment
-        android:id="@+id/recipeListFragment"
+        android:id="@+id/itemRecipes"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeListFragment"
         android:label="fragment_recipe_list"
-        tools:layout="@layout/fragment_recipe_list" >
+        tools:layout="@layout/fragment_recipe_list">
         <action
             android:id="@+id/action_recipeListFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
@@ -18,9 +18,14 @@
         android:id="@+id/recipeDetailFragment"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeDetailFragment"
         android:label="fragment_recipe_detail"
-        tools:layout="@layout/fragment_recipe_detail" >
+        tools:layout="@layout/fragment_recipe_detail">
         <argument
             android:name="recipeId"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
 </navigation>
