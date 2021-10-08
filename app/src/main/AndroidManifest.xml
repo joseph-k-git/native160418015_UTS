@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.joseph18.ifubaya.adv160418015utsrecipedia">
-
+    
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Adv160418015UTSRecipedia"
         tools:targetApi="m">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
