@@ -17,4 +17,14 @@
         android:icon="@drawable/ic_baseline_person_24"
         android:title="Account"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/aboutFragment"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="Account"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/creditFragment"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="Account"
+        app:showAsAction="always" />
 </menu>

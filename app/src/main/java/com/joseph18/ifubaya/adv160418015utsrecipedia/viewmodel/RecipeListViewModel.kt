@@ -17,9 +17,6 @@ class RecipeListViewModel(application: Application): AndroidViewModel(applicatio
         loadingLD.value = true
 
         recipesLD.value = Recipe.getMockRecipes();
-        Recipe.getMockRecipes().forEach {
-            Log.d("foreach", it.name)
-        }
 
         loadingLD.value = false
     }
