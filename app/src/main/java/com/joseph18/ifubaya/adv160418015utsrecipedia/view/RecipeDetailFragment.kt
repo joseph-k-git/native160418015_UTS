@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -13,6 +14,7 @@ import com.joseph18.ifubaya.adv160418015utsrecipedia.model.Recipe
 import com.joseph18.ifubaya.adv160418015utsrecipedia.model.util.Util.Companion.loadImage
 import com.joseph18.ifubaya.adv160418015utsrecipedia.viewmodel.RecipeDetailViewModel
 import kotlinx.android.synthetic.main.fragment_recipe_detail.*
+import kotlinx.android.synthetic.main.fragment_recipe_edit.*
 
 class RecipeDetailFragment : Fragment() {
     private lateinit var viewModel :RecipeDetailViewModel
@@ -38,6 +40,13 @@ class RecipeDetailFragment : Fragment() {
         btnEdit.setOnClickListener() {
             val action = RecipeDetailFragmentDirections.actionRecipeDetailFragmentToRecipeEditFragment(recipeId = recipe.uuid)
             Navigation.findNavController(it).navigate(action)
+        }
+
+        btnDelete.setOnClickListener() {
+            viewModel.deleteRecipe(recipe)
+
+            Toast.makeText(it.context, "Recipe Edited", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(it).popBackStack()
         }
     }
 

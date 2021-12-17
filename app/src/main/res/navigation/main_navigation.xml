@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/itemRecipes"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeListFragment"
-        android:label="fragment_recipe_list"
+        android:label="Recipes"
         tools:layout="@layout/fragment_recipe_list">
         <action
             android:id="@+id/action_recipeListFragment_to_recipeDetailFragment"
@@ -32,22 +32,22 @@
     <fragment
         android:id="@+id/itemHome"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.MainFragment"
-        android:label="fragment_main"
+        android:label="Home"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/itemAccount"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.AccountDetailFragment"
-        android:label="fragment_account_detail"
+        android:label="Account"
         tools:layout="@layout/fragment_account_detail" />
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.AboutFragment"
-        android:label="fragment_about"
+        android:label="About"
         tools:layout="@layout/fragment_about" />
     <fragment
         android:id="@+id/creditFragment"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.CreditFragment"
-        android:label="fragment_credit"
+        android:label="Credit"
         tools:layout="@layout/fragment_credit" />
     <fragment
         android:id="@+id/recipeCreateFragment"
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/recipeEditFragment"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeEditFragment"
-        android:label="RecipeEditFragment" >
+        android:label="Edit Recipe">
         <argument
             android:name="recipeId"
             app:argType="integer" />

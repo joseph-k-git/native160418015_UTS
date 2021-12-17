@@ -35,6 +35,13 @@ class RecipeDetailViewModel(application: Application): AndroidViewModel(applicat
         }
     }
 
+    fun deleteRecipe(recipeToDelete :Recipe) {
+        launch {
+            val db = buildDatabase()
+            db.recipeDao().deleteRecipe(recipeToDelete)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
     }

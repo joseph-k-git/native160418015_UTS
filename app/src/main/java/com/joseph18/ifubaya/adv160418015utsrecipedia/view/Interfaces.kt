@@ -7,3 +7,15 @@ interface ButtonDetailClickListener {
 
     }
 }
+
+interface ButtonEditClickListener {
+    fun onButtonEditClick(view :View) {
+
+    }
+}
+
+interface ButtonDeleteClickListener {
+    fun onButtonDeleteClick(view :View) {
+
+    }
+}
