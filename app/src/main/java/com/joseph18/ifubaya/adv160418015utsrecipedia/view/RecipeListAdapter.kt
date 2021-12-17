@@ -10,7 +10,7 @@ import com.joseph18.ifubaya.adv160418015utsrecipedia.model.Recipe
 import com.joseph18.ifubaya.adv160418015utsrecipedia.model.util.Util.Companion.loadImage
 import kotlinx.android.synthetic.main.recipe_list_item.view.*
 
-class RecipeListAdapter(val recipeList :ArrayList<Recipe>): RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder>() {
+class RecipeListAdapter(private val recipeList :ArrayList<Recipe>): RecyclerView.Adapter<RecipeListAdapter.RecipeViewHolder>() {
     class RecipeViewHolder(val view: View): RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(
@@ -24,7 +24,7 @@ class RecipeListAdapter(val recipeList :ArrayList<Recipe>): RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.view.txtId.text = recipeList[position].id.toString()
+        holder.view.txtId.text = recipeList[position].uuid.toString()
         holder.view.txtName.text = recipeList[position].name
         holder.view.imageView.loadImage(recipeList[position].photoUrl.toString(), holder.view.progressBar)
 

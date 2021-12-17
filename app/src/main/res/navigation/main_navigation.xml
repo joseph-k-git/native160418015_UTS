@@ -25,6 +25,9 @@
         <argument
             android:name="recipeId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_recipeEditFragment"
+            app:destination="@id/recipeEditFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemHome"
@@ -51,4 +54,12 @@
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeCreateFragment"
         android:label="Add New Recipe"
         tools:layout="@layout/fragment_recipe_edit" />
+    <fragment
+        android:id="@+id/recipeEditFragment"
+        android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeEditFragment"
+        android:label="RecipeEditFragment" >
+        <argument
+            android:name="recipeId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

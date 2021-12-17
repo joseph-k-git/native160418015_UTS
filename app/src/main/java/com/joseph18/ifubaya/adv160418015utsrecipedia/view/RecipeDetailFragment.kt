@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.joseph18.ifubaya.adv160418015utsrecipedia.R
+import com.joseph18.ifubaya.adv160418015utsrecipedia.model.Recipe
 import com.joseph18.ifubaya.adv160418015utsrecipedia.model.util.Util.Companion.loadImage
 import com.joseph18.ifubaya.adv160418015utsrecipedia.viewmodel.RecipeDetailViewModel
 import kotlinx.android.synthetic.main.fragment_recipe_detail.*
 
 class RecipeDetailFragment : Fragment() {
     private lateinit var viewModel :RecipeDetailViewModel
+
+    private lateinit var recipe :Recipe
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,11 +34,17 @@ class RecipeDetailFragment : Fragment() {
         viewModel.fetch(RecipeDetailFragmentArgs.fromBundle(requireArguments()).recipeId)
 
         observeViewModel()
+
+        btnEdit.setOnClickListener() {
+            val action = RecipeDetailFragmentDirections.actionRecipeDetailFragmentToRecipeEditFragment(recipeId = recipe.uuid)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     fun observeViewModel() {
         viewModel.recipeLD.observe(viewLifecycleOwner, Observer {
-            txtId2.setText(it.id.toString())
+            recipe = it
+            txtId2.setText(it.uuid.toString())
             txtName2.setText(it.name)
             txtDescription2.setText(it.description)
             imageView2.loadImage(it.photoUrl.toString(), progressBar2)

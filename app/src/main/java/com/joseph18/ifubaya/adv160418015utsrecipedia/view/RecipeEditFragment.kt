@@ -1,7 +1,6 @@
 package com.joseph18.ifubaya.adv160418015utsrecipedia.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,12 +11,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.joseph18.ifubaya.adv160418015utsrecipedia.R
 import com.joseph18.ifubaya.adv160418015utsrecipedia.model.Recipe
+import com.joseph18.ifubaya.adv160418015utsrecipedia.model.util.Util.Companion.loadImage
 import com.joseph18.ifubaya.adv160418015utsrecipedia.viewmodel.RecipeCreateViewModel
-import com.joseph18.ifubaya.adv160418015utsrecipedia.viewmodel.RecipeDetailViewModel
+import com.joseph18.ifubaya.adv160418015utsrecipedia.viewmodel.RecipeEditViewModel
+import kotlinx.android.synthetic.main.fragment_recipe_detail.*
 import kotlinx.android.synthetic.main.fragment_recipe_edit.*
 
-class RecipeCreateFragment : Fragment() {
-    private lateinit var viewModel : RecipeCreateViewModel
+class RecipeEditFragment : Fragment() {
+    private lateinit var viewModel : RecipeEditViewModel
+
+    private lateinit var recipeToEdit :Recipe
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,24 +33,29 @@ class RecipeCreateFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(RecipeCreateViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(RecipeEditViewModel::class.java)
+        viewModel.fetch(RecipeEditFragmentArgs.fromBundle(requireArguments()).recipeId)
+
+        observeViewModel()
 
         btnSaveRecipe.setOnClickListener() {
-            var recipeToAdd = Recipe(
-                txtEditTitle.text.toString(),
-                txtEditDescription.text.toString(),
-                txtEditURLphoto.text.toString(),
-            )
-            viewModel.addRecipe(recipeToAdd)
+            recipeToEdit.name = txtEditTitle.text.toString()
+            recipeToEdit.description = txtEditDescription.text.toString()
+            recipeToEdit.photoUrl = txtEditURLphoto.text.toString()
 
-            Toast.makeText(it.context, "Recipe Created", Toast.LENGTH_SHORT).show()
+            viewModel.editRecipe(recipeToEdit)
+
+            Toast.makeText(it.context, "Recipe Edited", Toast.LENGTH_SHORT).show()
             Navigation.findNavController(it).popBackStack()
         }
     }
 
     fun observeViewModel() {
         viewModel.recipeLD.observe(viewLifecycleOwner, Observer {
-
+            recipeToEdit = it
+            txtEditTitle.setText(it.name)
+            txtEditDescription.setText(it.description)
+            txtEditURLphoto.setText(it.photoUrl)
         })
     }
 }

@@ -12,15 +12,12 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class RecipeListViewModel(application :Application): AndroidViewModel(application), CoroutineScope {
-    val recipesLD = MutableLiveData<List<Recipe>>()
-
-    val loadingErrorLD = MutableLiveData<Boolean>()
-    val loadingLD = MutableLiveData<Boolean>()
+class RecipeEditViewModel(application: Application): AndroidViewModel(application), CoroutineScope
+{
+    val recipeLD = MutableLiveData<Recipe>()
 
     private var job = Job()
-
-    override val coroutineContext :CoroutineContext
+    override val coroutineContext : CoroutineContext
         get() = job + Dispatchers.Main
 
     private fun buildDatabase(): RecipeDatabase {
@@ -31,23 +28,17 @@ class RecipeListViewModel(application :Application): AndroidViewModel(applicatio
         ).build()
     }
 
-    fun refresh() {
-        loadingErrorLD.value = false
-        loadingLD.value = true
-
+    fun fetch(id :Int) {
         launch {
             val db = buildDatabase()
-            recipesLD.value = db.recipeDao().fetchAll()
+            recipeLD.value = db.recipeDao().getById(id)
         }
-
-        loadingLD.value = false
     }
 
-    fun removeRecipe(recipeToDelete :Recipe) {
+    fun editRecipe(recipeToEdit :Recipe) {
         launch {
             val db = buildDatabase()
-            db.recipeDao().deleteRecipe(recipeToDelete)
-            recipesLD.value = db.recipeDao().fetchAll()
+            db.recipeDao().edit(recipeToEdit.name, recipeToEdit.description, recipeToEdit.photoUrl, recipeToEdit.uuid)
         }
     }
 

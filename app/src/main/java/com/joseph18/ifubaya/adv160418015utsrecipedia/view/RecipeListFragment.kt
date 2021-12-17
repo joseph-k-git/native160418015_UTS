@@ -40,7 +40,7 @@ class RecipeListFragment : Fragment() {
         refreshLayout.setOnRefreshListener {
             recyclerView.visibility = View.GONE
             txtErrorMessage.visibility = View.GONE
-            progressBar.visibility = View.VISIBLE
+            refreshProgressBar.visibility = View.VISIBLE
 
             viewModel.refresh()
 
