@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.joseph18.ifubaya.adv160418015utsrecipedia.R
 import com.joseph18.ifubaya.adv160418015utsrecipedia.viewmodel.RecipeListViewModel
@@ -44,6 +45,11 @@ class RecipeListFragment : Fragment() {
             viewModel.refresh()
 
             refreshLayout.isRefreshing = false
+        }
+
+        fabAddRecipe.setOnClickListener() {
+            val action = RecipeListFragmentDirections.actionRecipeListFragmentToRecipeCreateFragment()
+            Navigation.findNavController(it).navigate(action)
         }
 
         observeViewModel()

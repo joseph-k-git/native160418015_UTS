@@ -13,11 +13,14 @@
         <action
             android:id="@+id/action_recipeListFragment_to_recipeDetailFragment"
             app:destination="@id/recipeDetailFragment" />
+        <action
+            android:id="@+id/action_recipeListFragment_to_recipeCreateFragment"
+            app:destination="@id/recipeCreateFragment" />
     </fragment>
     <fragment
         android:id="@+id/recipeDetailFragment"
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeDetailFragment"
-        android:label="fragment_recipe_detail"
+        android:label="Recipe Detail"
         tools:layout="@layout/fragment_recipe_detail">
         <argument
             android:name="recipeId"
@@ -43,4 +46,9 @@
         android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.CreditFragment"
         android:label="fragment_credit"
         tools:layout="@layout/fragment_credit" />
+    <fragment
+        android:id="@+id/recipeCreateFragment"
+        android:name="com.joseph18.ifubaya.adv160418015utsrecipedia.view.RecipeCreateFragment"
+        android:label="Add New Recipe"
+        tools:layout="@layout/fragment_recipe_edit" />
 </navigation>
