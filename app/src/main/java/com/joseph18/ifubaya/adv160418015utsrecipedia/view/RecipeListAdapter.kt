@@ -44,4 +44,9 @@ class RecipeListAdapter(private val recipeList :ArrayList<Recipe>): RecyclerView
 
         notifyDataSetChanged()
     }
+
+    override fun onButtonDetailClick(view: View) {
+        val action = RecipeListFragmentDirections.actionRecipeListFragmentToRecipeDetailFragment(recipeId = Integer.parseInt(view.tag.toString()))
+        Navigation.findNavController(view).navigate(action)
+    }
 }
